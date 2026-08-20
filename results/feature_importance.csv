@@ -1,0 +1,13 @@
+feature,feature_bg,importance
+alcohol,алкохол,0.1429
+free sulfur dioxide,свободен серен диоксид,0.1205
+volatile acidity,летлива киселинност,0.1057
+density,плътност,0.0949
+total sulfur dioxide,общ серен диоксид,0.0851
+sulphates,сулфати,0.0811
+chlorides,хлориди,0.079
+residual sugar,остатъчна захар,0.073
+citric acid,лимонена киселина,0.0726
+fixed acidity,фиксирана киселинност,0.0685
+pH,pH,0.0678
+is_red,червено вино,0.0087

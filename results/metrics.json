@@ -1,0 +1,450 @@
+{
+  "dataset": {
+    "source": "UCI Wine Quality (Cortez et al., 2009)",
+    "n_red": 1599,
+    "n_white": 4898,
+    "n_total": 6497,
+    "n_features": 12,
+    "missing_values": 0,
+    "class_counts": {
+      "ниско": 246,
+      "средно": 4974,
+      "високо": 1277
+    },
+    "original_quality_counts": {
+      "3": 30,
+      "4": 216,
+      "5": 2138,
+      "6": 2836,
+      "7": 1079,
+      "8": 193,
+      "9": 5
+    },
+    "class_mapping": {
+      "ниско": "quality ≤ 4",
+      "средно": "quality 5–6",
+      "високо": "quality ≥ 7"
+    }
+  },
+  "split": {
+    "test_size": 0.2,
+    "stratified": true,
+    "random_state": 42,
+    "n_train": 5197,
+    "n_test": 1300,
+    "cv_folds": 5,
+    "cv_scoring": "f1_macro"
+  },
+  "feature_selection": {
+    "ranking": [
+      {
+        "feature": "alcohol",
+        "feature_bg": "алкохол",
+        "mutual_info": 0.0975,
+        "anova_f": 476.9614
+      },
+      {
+        "feature": "density",
+        "feature_bg": "плътност",
+        "mutual_info": 0.0881,
+        "anova_f": 220.0902
+      },
+      {
+        "feature": "total sulfur dioxide",
+        "feature_bg": "общ серен диоксид",
+        "mutual_info": 0.0411,
+        "anova_f": 11.3891
+      },
+      {
+        "feature": "chlorides",
+        "feature_bg": "хлориди",
+        "mutual_info": 0.0366,
+        "anova_f": 67.5189
+      },
+      {
+        "feature": "residual sugar",
+        "feature_bg": "остатъчна захар",
+        "mutual_info": 0.029,
+        "anova_f": 17.5109
+      },
+      {
+        "feature": "volatile acidity",
+        "feature_bg": "летлива киселинност",
+        "mutual_info": 0.0285,
+        "anova_f": 104.1601
+      },
+      {
+        "feature": "citric acid",
+        "feature_bg": "лимонена киселина",
+        "mutual_info": 0.0246,
+        "anova_f": 10.6933
+      },
+      {
+        "feature": "fixed acidity",
+        "feature_bg": "фиксирана киселинност",
+        "mutual_info": 0.0242,
+        "anova_f": 9.9405
+      },
+      {
+        "feature": "free sulfur dioxide",
+        "feature_bg": "свободен серен диоксид",
+        "mutual_info": 0.0193,
+        "anova_f": 21.3453
+      },
+      {
+        "feature": "sulphates",
+        "feature_bg": "сулфати",
+        "mutual_info": 0.019,
+        "anova_f": 5.3289
+      },
+      {
+        "feature": "pH",
+        "feature_bg": "pH",
+        "mutual_info": 0.0102,
+        "anova_f": 1.4632
+      },
+      {
+        "feature": "is_red",
+        "feature_bg": "червено вино",
+        "mutual_info": 0.0027,
+        "anova_f": 19.9419
+      }
+    ],
+    "selected_kbest": [
+      "volatile acidity",
+      "residual sugar",
+      "chlorides",
+      "free sulfur dioxide",
+      "total sulfur dioxide",
+      "density",
+      "alcohol",
+      "is_red"
+    ],
+    "k": 8
+  },
+  "best_params": {
+    "Decision Tree": {
+      "criterion": "entropy",
+      "max_depth": null,
+      "min_samples_split": 2
+    },
+    "k-NN": {
+      "clf__n_neighbors": 3,
+      "clf__p": 2,
+      "clf__weights": "distance"
+    },
+    "Random Forest": {
+      "max_depth": 20,
+      "max_features": "sqrt",
+      "min_samples_leaf": 3,
+      "n_estimators": 200
+    }
+  },
+  "cv_best_f1_macro": {
+    "Decision Tree": 0.5467,
+    "k-NN": 0.5847,
+    "Random Forest": 0.6183
+  },
+  "test_results": [
+    {
+      "name": "Baseline (majority)",
+      "metrics": {
+        "accuracy": 0.7654,
+        "precision_macro": 0.2551,
+        "recall_macro": 0.3333,
+        "f1_macro": 0.289,
+        "f1_weighted": 0.6637
+      },
+      "confusion_matrix": [
+        [
+          0,
+          49,
+          0
+        ],
+        [
+          0,
+          995,
+          0
+        ],
+        [
+          0,
+          256,
+          0
+        ]
+      ],
+      "train_score_f1_macro": 0.2891,
+      "classification_report": {
+        "ниско": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 49.0
+        },
+        "средно": {
+          "precision": 0.7654,
+          "recall": 1.0,
+          "f1-score": 0.8671,
+          "support": 995.0
+        },
+        "високо": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1-score": 0.0,
+          "support": 256.0
+        }
+      }
+    },
+    {
+      "name": "Decision Tree",
+      "metrics": {
+        "accuracy": 0.7954,
+        "precision_macro": 0.5929,
+        "recall_macro": 0.5723,
+        "f1_macro": 0.5794,
+        "f1_weighted": 0.7936
+      },
+      "confusion_matrix": [
+        [
+          11,
+          35,
+          3
+        ],
+        [
+          22,
+          863,
+          110
+        ],
+        [
+          1,
+          95,
+          160
+        ]
+      ],
+      "train_score_f1_macro": 1.0,
+      "classification_report": {
+        "ниско": {
+          "precision": 0.3235,
+          "recall": 0.2245,
+          "f1-score": 0.2651,
+          "support": 49.0
+        },
+        "средно": {
+          "precision": 0.8691,
+          "recall": 0.8673,
+          "f1-score": 0.8682,
+          "support": 995.0
+        },
+        "високо": {
+          "precision": 0.5861,
+          "recall": 0.625,
+          "f1-score": 0.6049,
+          "support": 256.0
+        }
+      }
+    },
+    {
+      "name": "k-NN",
+      "metrics": {
+        "accuracy": 0.8162,
+        "precision_macro": 0.6862,
+        "recall_macro": 0.5926,
+        "f1_macro": 0.6175,
+        "f1_weighted": 0.8117
+      },
+      "confusion_matrix": [
+        [
+          12,
+          34,
+          3
+        ],
+        [
+          9,
+          884,
+          102
+        ],
+        [
+          0,
+          91,
+          165
+        ]
+      ],
+      "train_score_f1_macro": 1.0,
+      "classification_report": {
+        "ниско": {
+          "precision": 0.5714,
+          "recall": 0.2449,
+          "f1-score": 0.3429,
+          "support": 49.0
+        },
+        "средно": {
+          "precision": 0.8761,
+          "recall": 0.8884,
+          "f1-score": 0.8822,
+          "support": 995.0
+        },
+        "високо": {
+          "precision": 0.6111,
+          "recall": 0.6445,
+          "f1-score": 0.6274,
+          "support": 256.0
+        }
+      }
+    },
+    {
+      "name": "Random Forest",
+      "metrics": {
+        "accuracy": 0.7831,
+        "precision_macro": 0.5966,
+        "recall_macro": 0.6499,
+        "f1_macro": 0.6156,
+        "f1_weighted": 0.7924
+      },
+      "confusion_matrix": [
+        [
+          18,
+          29,
+          2
+        ],
+        [
+          34,
+          801,
+          160
+        ],
+        [
+          2,
+          55,
+          199
+        ]
+      ],
+      "train_score_f1_macro": 0.8935,
+      "classification_report": {
+        "ниско": {
+          "precision": 0.3333,
+          "recall": 0.3673,
+          "f1-score": 0.3495,
+          "support": 49.0
+        },
+        "средно": {
+          "precision": 0.9051,
+          "recall": 0.805,
+          "f1-score": 0.8521,
+          "support": 995.0
+        },
+        "високо": {
+          "precision": 0.5512,
+          "recall": 0.7773,
+          "f1-score": 0.6451,
+          "support": 256.0
+        }
+      }
+    }
+  ],
+  "selected_features_ablation": {
+    "features": [
+      "volatile acidity",
+      "residual sugar",
+      "chlorides",
+      "free sulfur dioxide",
+      "total sulfur dioxide",
+      "density",
+      "alcohol",
+      "is_red"
+    ],
+    "metrics": {
+      "accuracy": 0.7662,
+      "precision_macro": 0.5883,
+      "recall_macro": 0.6555,
+      "f1_macro": 0.611,
+      "f1_weighted": 0.7782
+    }
+  },
+  "top_correlated_pairs": [
+    {
+      "a": "free sulfur dioxide",
+      "b": "total sulfur dioxide",
+      "abs_corr": 0.721
+    },
+    {
+      "a": "total sulfur dioxide",
+      "b": "is_red",
+      "abs_corr": 0.7
+    },
+    {
+      "a": "density",
+      "b": "alcohol",
+      "abs_corr": 0.687
+    },
+    {
+      "a": "volatile acidity",
+      "b": "is_red",
+      "abs_corr": 0.653
+    },
+    {
+      "a": "residual sugar",
+      "b": "density",
+      "abs_corr": 0.553
+    }
+  ],
+  "random_forest_importance": [
+    {
+      "feature": "alcohol",
+      "feature_bg": "алкохол",
+      "importance": 0.1429
+    },
+    {
+      "feature": "free sulfur dioxide",
+      "feature_bg": "свободен серен диоксид",
+      "importance": 0.1205
+    },
+    {
+      "feature": "volatile acidity",
+      "feature_bg": "летлива киселинност",
+      "importance": 0.1057
+    },
+    {
+      "feature": "density",
+      "feature_bg": "плътност",
+      "importance": 0.0949
+    },
+    {
+      "feature": "total sulfur dioxide",
+      "feature_bg": "общ серен диоксид",
+      "importance": 0.0851
+    },
+    {
+      "feature": "sulphates",
+      "feature_bg": "сулфати",
+      "importance": 0.0811
+    },
+    {
+      "feature": "chlorides",
+      "feature_bg": "хлориди",
+      "importance": 0.079
+    },
+    {
+      "feature": "residual sugar",
+      "feature_bg": "остатъчна захар",
+      "importance": 0.073
+    },
+    {
+      "feature": "citric acid",
+      "feature_bg": "лимонена киселина",
+      "importance": 0.0726
+    },
+    {
+      "feature": "fixed acidity",
+      "feature_bg": "фиксирана киселинност",
+      "importance": 0.0685
+    },
+    {
+      "feature": "pH",
+      "feature_bg": "pH",
+      "importance": 0.0678
+    },
+    {
+      "feature": "is_red",
+      "feature_bg": "червено вино",
+      "importance": 0.0087
+    }
+  ]
+}
